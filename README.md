@@ -1,8 +1,8 @@
-debian-ssh
+debian-ssh-kafka
 ==========
 
 Simple Debian/Ubuntu Docker images with *passwordless* SSH access and a regular user
-with `sudo` rights
+with `sudo` rights. Fork of https://github.com/krlmlr/debian-ssh
 
 Tags (and their corresponding official base images)
 ----
@@ -10,27 +10,16 @@ Tags (and their corresponding official base images)
 ### Debian
 
 - `latest` -> `debian:latest`
-- `jessie` -> `debian:jessie`
-- `wheezy` -> `debian:wheezy`
-- `squeeze` -> `debian:squeeze`
-
-### Ubuntu
-
-- `ubuntu` -> `ubuntu:latest`
-- `vivid` -> `ubuntu:vivid`
-- `utopic` -> `ubuntu:utopic`
-- `trusty` -> `ubuntu:trusty`
-- `precise` -> `ubuntu:precise`
-
+- `stretch` -> `debian:stretch`
 
 Using
 -----
 
-The images are built by [Docker hub](https://registry.hub.docker.com/u/krlmlr/debian-ssh/).
+The images are built by [Docker hub](https://registry.hub.docker.com/u/kawayu168/debian-ssh-kafka/).
 Each Debian release corresponds to a tag.  To run an SSH daemon in a new Debian "wheezy"
 container:
 
-    docker run -d -p 2222:22 -e SSH_KEY="$(cat ~/.ssh/id_rsa.pub)" krlmlr/debian-ssh:wheezy
+    docker run -d -p 2222:22 -e SSH_KEY="$(cat ~/.ssh/id_rsa.pub)" kawayu168/debian-ssh-kafka:latest
 
 This requires a public key in `~/.ssh/id_rsa.pub`.
 
@@ -54,9 +43,9 @@ Enhancing
 Each Debian release corresponds to a Git branch, the branches differ only by
 the `FROM` element in the `Dockerfile`.
 
-To create the image `krlmlr/debian-ssh` e.g. for Debian "jessie":
+To create the image `kawayu168/debian-ssh-kafka` e.g. for Debian "stretch":
 
-    git checkout jessie
+    git checkout stretch
     make build
 
 Use `make rebuild` to pull the base image and rebuild without caching.
